@@ -4,19 +4,18 @@ import com.pacific.secrethilter.types.Policy;
 
 /**
  * Interface for draw policy deck.
- * 
- * @author prashantchaudhary
  *
+ * @author prashantchaudhary
  */
 public interface DrawPolicyDeck {
 
-  /**
-   * Draws the policy from the deck.
-   */
-  Policy drawPolicy();
+    /**
+     * Draws the policy from the deck.
+     */
+    Policy drawPolicy();
 
-  /**
-   * Puts back the policy at the bottom of the deck.
-   */
-  void putDiscardedPolicy(Policy policy);
+    /**
+     * Puts back the policy at the bottom of the deck.
+     */
+    void putDiscardedPolicy(Policy policy);
 }

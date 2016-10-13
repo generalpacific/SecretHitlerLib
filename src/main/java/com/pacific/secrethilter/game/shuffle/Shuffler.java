@@ -6,12 +6,11 @@ import com.pacific.secrethilter.types.Policy;
 
 /**
  * Takes a list of policies and returns the list of shuffled policies.
- * 
- * @author prashantchaudhary
  *
+ * @author prashantchaudhary
  */
 public interface Shuffler {
-  
-  List<Policy> shuffle(List<Policy> policies);
+
+    List<Policy> shuffle(List<Policy> policies);
 
 }

@@ -2,26 +2,25 @@ package com.pacific.secrethilter.game;
 
 /**
  * Policy track that maintains the policies enacted for the current track.
- * 
- * @author prashantchaudhary
  *
+ * @author prashantchaudhary
  */
 public class PolicyTrack {
-  private int numOfPoliciesEnacted;
+    private int numOfPoliciesEnacted;
 
-  private PolicyTrack() {
-    numOfPoliciesEnacted = 0;
-  }
+    private PolicyTrack() {
+        numOfPoliciesEnacted = 0;
+    }
 
-  public static PolicyTrack newPolicyTrack() {
-    return new PolicyTrack();
-  }
+    public static PolicyTrack newPolicyTrack() {
+        return new PolicyTrack();
+    }
 
-  public int getNumberOfPoliciesEnacted() {
-    return numOfPoliciesEnacted;
-  }
+    public int getNumberOfPoliciesEnacted() {
+        return numOfPoliciesEnacted;
+    }
 
-  public void enactPolicy() {
-    numOfPoliciesEnacted++;
-  }
+    public void enactPolicy() {
+        numOfPoliciesEnacted++;
+    }
 }
