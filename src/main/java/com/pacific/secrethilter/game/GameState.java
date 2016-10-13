@@ -1,8 +1,15 @@
 package com.pacific.secrethilter.game;
 
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 
+import com.pacific.secrethilter.player.Player;
 import com.pacific.secrethilter.types.Policy;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 /**
@@ -22,17 +29,23 @@ public class GameState {
     private final DrawPolicyDeck drawPolicyDeck;
     private final PolicyTrack liberalPolicyTrack;
     private final PolicyTrack fascistPolicyTrack;
+    private final Map<String, Player> players;
 
-    private GameState(final List<Policy> initialShuffledPolicies) {
+    private String currentPresident;
+    private String currentChancellor;
+
+
+    private GameState(final List<Policy> initialShuffledPolicies, final Set<Player> initialPlayers) {
         drawPolicyDeck =
                 QueueDrawPolicyDeck.newDrawPolicyDeck(initialShuffledPolicies);
         liberalPolicyTrack = PolicyTrack.newPolicyTrack();
         fascistPolicyTrack = PolicyTrack.newPolicyTrack();
+        players = initialPlayers.stream().collect(Collectors.toMap(Player::getPlayerId, Function.identity()));
     }
 
     public static GameState newGameState(
-            final List<Policy> initialShuffledPolicies) {
-        return new GameState(initialShuffledPolicies);
+            final List<Policy> initialShuffledPolicies, final Set<Player> initialPlayers) {
+        return new GameState(initialShuffledPolicies, initialPlayers);
     }
 
     public Policy drawPolicy() {
@@ -45,5 +58,13 @@ public class GameState {
         } else {
             fascistPolicyTrack.enactPolicy();
         }
+    }
+
+    public void setCurrentPresident(String playerId) {
+        currentPresident = playerId;
+    }
+
+    public void setCurrentChancellor(String playerId) {
+        currentChancellor = playerId;
     }
 }
