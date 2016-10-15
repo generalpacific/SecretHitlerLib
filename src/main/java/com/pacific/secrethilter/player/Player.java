@@ -14,11 +14,10 @@ import com.pacific.secrethilter.types.Vote;
  *
  * @author prashantchaudhary
  */
-public class Player implements VoteCaster, PolicyDecider {
+public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
 
     private final String playerId;
     private final Role role;
-
 
     private Player(String playerId, Role role) {
         this.playerId = playerId;
@@ -36,19 +35,25 @@ public class Player implements VoteCaster, PolicyDecider {
     }
 
     @Override
-    public List<Policy> decidePolicy(Policy policy1, Policy policy2,
-                                     Policy policy3) {
+    public List<Policy> decidePolicyToSendtoChancellor(Policy policy1, Policy policy2,
+                                            Policy policy3) {
         // TODO Add logic
         return ImmutableList.of(policy1, policy2);
     }
 
     @Override
-    public Policy decidePolicy(Policy policy1, Policy policy2) {
+    public Policy decidePolicyToEnact(Policy policy1, Policy policy2) {
         // TODO Add logic
         return policy1;
     }
 
     public String getPlayerId() {
         return  playerId;
+    }
+
+    @Override
+    public Player selectChancellor() {
+        // TODO
+        return null;
     }
 }
