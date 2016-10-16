@@ -23,4 +23,11 @@ public class PolicyTrack {
     public void enactPolicy() {
         numOfPoliciesEnacted++;
     }
+
+    @Override
+    public String toString() {
+        return "PolicyTrack{" +
+                "numOfPoliciesEnacted=" + numOfPoliciesEnacted +
+                '}';
+    }
 }

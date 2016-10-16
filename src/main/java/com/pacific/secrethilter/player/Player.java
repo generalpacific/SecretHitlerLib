@@ -1,9 +1,13 @@
 package com.pacific.secrethilter.player;
 
 import java.util.List;
+import java.util.Random;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
+import com.pacific.secrethilter.game.GameState;
+import com.pacific.secrethilter.game.Government;
 import com.pacific.secrethilter.types.Policy;
 import com.pacific.secrethilter.types.Position;
 import com.pacific.secrethilter.types.Role;
@@ -24,7 +28,7 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
         this.role = role;
     }
 
-    public Player newPlayer(String playerId, Role role) {
+    public static Player newPlayer(String playerId, Role role) {
         return new Player(playerId, role);
     }
 
@@ -52,8 +56,47 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
     }
 
     @Override
-    public Player selectChancellor() {
-        // TODO
+    public Player selectChancellor(final GameState gameState) {
+        final List<Player> players = gameState.getPlayers();
+        final Government lastGovernment = gameState.getLastGovernment();
+        for (final Player player : players) {
+            String playerId = player.getPlayerId();
+            if (isCurrentOrLastChancellorOrLastPresident(lastGovernment, playerId)) {
+                continue;
+            }
+            return player;
+        }
         return null;
+    }
+
+    private boolean isCurrentOrLastChancellorOrLastPresident(Government lastGovernment, String playerId) {
+        if (playerId.equals(getPlayerId())) {
+            return true;
+        }
+        if (lastGovernment == null) {
+            return false;
+        }
+        return playerId.equals(lastGovernment.getChancellor().getPlayerId()) || playerId.equals(lastGovernment.getPresident());
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerId='" + playerId + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return Objects.equal(playerId, player.playerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(playerId);
     }
 }

@@ -6,6 +6,9 @@ import com.pacific.secrethilter.player.Player;
 import com.pacific.secrethilter.types.Policy;
 import com.pacific.secrethilter.types.Position;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
@@ -15,21 +18,25 @@ import java.util.List;
  */
 public class GameRunner {
 
+    private static final Logger logger = LoggerFactory.getLogger(GameRunner.class.getSimpleName());
+
     private final GameState gameState;
 
     private GameRunner(List<Policy> initialShuffledPolicies, List<Player> players, Player firstPresident) {
         this.gameState = GameState.newGameState(initialShuffledPolicies, players, firstPresident);
     }
 
-    public GameRunner newGameRunner(List<Policy> initialShuffledPolicies, List<Player> players, Player firstPresident) {
+    public static GameRunner newGameRunner(List<Policy> initialShuffledPolicies, List<Player> players, Player firstPresident) {
         return new GameRunner(initialShuffledPolicies, players, firstPresident);
     }
 
     public void runRound() {
 
+        logger.info("GameState before round: " + gameState);
+
         final Player nextPresident = gameState.getNextPresident();
 
-        final Player chancellor = nextPresident.selectChancellor();
+        final Player chancellor = nextPresident.selectChancellor(gameState);
 
         for (final Player player : gameState.getPlayers()) {
             if (player.equals(chancellor)) {
@@ -49,5 +56,7 @@ public class GameRunner {
         final Policy policy = gameState.getCurrentGovernment().getChancellor().decidePolicyToEnact(policies.get(0), policies.get(1));
 
         gameState.enactPolicy(policy);
+        logger.info("GameState after round: " + gameState);
+
     }
 }

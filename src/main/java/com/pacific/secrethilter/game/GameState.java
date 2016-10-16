@@ -112,4 +112,14 @@ public class GameState {
         return queue;
     }
 
+    @Override
+    public String toString() {
+        return "GameState{" +
+                "drawPolicyDeck=" + drawPolicyDeck +
+                ", liberalPolicyTrack=" + liberalPolicyTrack +
+                ", fascistPolicyTrack=" + fascistPolicyTrack +
+                ", currentGovernment=" + currentGovernment +
+                ", lastGovernment=" + lastGovernment +
+                '}';
+    }
 }
