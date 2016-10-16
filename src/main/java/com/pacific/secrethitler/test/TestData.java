@@ -1,10 +1,10 @@
-package com.pacific.secrethilter.test;
+package com.pacific.secrethitler.test;
 
 import com.google.common.collect.ImmutableList;
 
-import com.pacific.secrethilter.player.Player;
-import com.pacific.secrethilter.types.Policy;
-import com.pacific.secrethilter.types.Role;
+import com.pacific.secrethitler.player.Player;
+import com.pacific.secrethitler.types.Policy;
+import com.pacific.secrethitler.types.Role;
 
 import java.util.List;
 import java.util.stream.Collectors;

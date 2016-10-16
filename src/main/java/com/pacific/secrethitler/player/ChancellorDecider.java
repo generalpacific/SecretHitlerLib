@@ -1,6 +1,6 @@
-package com.pacific.secrethilter.player;
+package com.pacific.secrethitler.player;
 
-import com.pacific.secrethilter.game.GameState;
+import com.pacific.secrethitler.game.GameState;
 
 /**
  * Interface for selecting the chancellor

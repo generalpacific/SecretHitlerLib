@@ -1,10 +1,10 @@
-package com.pacific.secrethilter;
+package com.pacific.secrethitler;
 
-import com.pacific.secrethilter.game.GameState;
-import com.pacific.secrethilter.game.Government;
-import com.pacific.secrethilter.player.Player;
-import com.pacific.secrethilter.types.Policy;
-import com.pacific.secrethilter.types.Position;
+import com.pacific.secrethitler.game.GameState;
+import com.pacific.secrethitler.game.Government;
+import com.pacific.secrethitler.player.Player;
+import com.pacific.secrethitler.types.Policy;
+import com.pacific.secrethitler.types.Position;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

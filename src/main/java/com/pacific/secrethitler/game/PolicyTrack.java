@@ -1,4 +1,4 @@
-package com.pacific.secrethilter.game;
+package com.pacific.secrethitler.game;
 
 /**
  * Policy track that maintains the policies enacted for the current track.

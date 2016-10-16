@@ -1,6 +1,6 @@
-package com.pacific.secrethilter.game;
+package com.pacific.secrethitler.game;
 
-import com.pacific.secrethilter.player.Player;
+import com.pacific.secrethitler.player.Player;
 
 /**
  * Government class that consists of president and chancellor.

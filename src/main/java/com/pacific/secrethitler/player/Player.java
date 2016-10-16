@@ -1,17 +1,16 @@
-package com.pacific.secrethilter.player;
+package com.pacific.secrethitler.player;
 
 import java.util.List;
-import java.util.Random;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
-import com.pacific.secrethilter.game.GameState;
-import com.pacific.secrethilter.game.Government;
-import com.pacific.secrethilter.types.Policy;
-import com.pacific.secrethilter.types.Position;
-import com.pacific.secrethilter.types.Role;
-import com.pacific.secrethilter.types.Vote;
+import com.pacific.secrethitler.game.GameState;
+import com.pacific.secrethitler.game.Government;
+import com.pacific.secrethitler.types.Policy;
+import com.pacific.secrethitler.types.Position;
+import com.pacific.secrethitler.types.Role;
+import com.pacific.secrethitler.types.Vote;
 
 /**
  * This is the player class that holds the state for the player.

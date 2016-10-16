@@ -1,7 +1,7 @@
-package com.pacific.secrethilter.player;
+package com.pacific.secrethitler.player;
 
-import com.pacific.secrethilter.types.Position;
-import com.pacific.secrethilter.types.Vote;
+import com.pacific.secrethitler.types.Position;
+import com.pacific.secrethitler.types.Vote;
 
 public interface VoteCaster {
 

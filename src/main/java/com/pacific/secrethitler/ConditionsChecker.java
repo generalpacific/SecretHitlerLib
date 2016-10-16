@@ -1,10 +1,10 @@
-package com.pacific.secrethilter;
+package com.pacific.secrethitler;
 
-import com.pacific.secrethilter.game.GameState;
+import com.pacific.secrethitler.game.GameState;
 
 /**
  * Checks the game condition based on the
- * {@link com.pacific.secrethilter.game.GameState}
+ * {@link com.pacific.secrethitler.game.GameState}
  */
 public class ConditionsChecker {
 

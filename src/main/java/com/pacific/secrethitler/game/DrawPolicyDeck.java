@@ -1,6 +1,6 @@
-package com.pacific.secrethilter.game;
+package com.pacific.secrethitler.game;
 
-import com.pacific.secrethilter.types.Policy;
+import com.pacific.secrethitler.types.Policy;
 
 /**
  * Interface for draw policy deck.

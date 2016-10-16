@@ -1,6 +1,6 @@
-package com.pacific.secrethilter;
+package com.pacific.secrethitler;
 
-import com.pacific.secrethilter.test.TestData;
+import com.pacific.secrethitler.test.TestData;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

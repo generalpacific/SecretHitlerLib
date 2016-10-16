@@ -1,8 +1,8 @@
-package com.pacific.secrethilter.player;
+package com.pacific.secrethitler.player;
 
 import java.util.List;
 
-import com.pacific.secrethilter.types.Policy;
+import com.pacific.secrethitler.types.Policy;
 
 /**
  * Interface for policy decider.

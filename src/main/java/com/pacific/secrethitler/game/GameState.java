@@ -1,15 +1,14 @@
-package com.pacific.secrethilter.game;
+package com.pacific.secrethitler.game;
 
 import com.google.common.collect.Lists;
 
-import com.pacific.secrethilter.player.Player;
-import com.pacific.secrethilter.types.Policy;
+import com.pacific.secrethitler.player.Player;
+import com.pacific.secrethitler.types.Policy;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package com.pacific.secrethilter.types;
+package com.pacific.secrethitler.types;
 
 /**
  * The types of policies that implemented by the politicians.

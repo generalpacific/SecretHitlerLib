@@ -1,4 +1,4 @@
-package com.pacific.secrethilter.types;
+package com.pacific.secrethitler.types;
 
 /**
  * Types of roles assigned to the users.
