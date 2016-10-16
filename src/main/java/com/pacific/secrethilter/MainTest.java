@@ -10,11 +10,14 @@ import org.slf4j.LoggerFactory;
  */
 public class MainTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainTest.class.getSimpleName());
+    private static final Logger logger = LoggerFactory.getLogger(MainTest
+            .class.getSimpleName());
 
     public static void main(String[] args) {
         final TestData testData = new TestData();
-        final GameRunner gameRunner = GameRunner.newGameRunner(testData.getInitialPolicies(), testData.getInitialPlayers(), testData.getFirstPresident());
+        final GameRunner gameRunner = GameRunner.newGameRunner(testData
+                .getInitialPolicies(), testData.getInitialPlayers(), testData
+                .getFirstPresident());
 
         logger.info("Running round 1");
         gameRunner.runRound();

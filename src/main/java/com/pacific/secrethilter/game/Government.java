@@ -14,7 +14,8 @@ public class Government {
         this.chancellor = chancellor;
     }
 
-    public static Government newGovernment(final Player president, final Player chancellor) {
+    public static Government newGovernment(final Player president, final
+    Player chancellor) {
         return new Government(president, chancellor);
     }
 
@@ -28,9 +29,7 @@ public class Government {
 
     @Override
     public String toString() {
-        return "Government{" +
-                "president=" + president +
-                ", chancellor=" + chancellor +
-                '}';
+        return "Government{" + "president=" + president + ", chancellor=" +
+                chancellor + '}';
     }
 }

@@ -7,8 +7,8 @@ import java.util.Queue;
 import com.pacific.secrethilter.types.Policy;
 
 /**
- * The class represents the draw policy deck that contains the policies which players can draw the
- * policies during each round.
+ * The class represents the draw policy deck that contains the policies which
+ * players can draw the policies during each round.
  *
  * @author prashantchaudhary
  */
@@ -23,8 +23,8 @@ public class QueueDrawPolicyDeck implements DrawPolicyDeck {
     /**
      * Create an instance of the initial policy deck.
      */
-    public static QueueDrawPolicyDeck newDrawPolicyDeck(
-            final List<Policy> initialShuffledPolicies) {
+    public static QueueDrawPolicyDeck newDrawPolicyDeck(final List<Policy>
+                                                                initialShuffledPolicies) {
         return new QueueDrawPolicyDeck(initialShuffledPolicies);
     }
 

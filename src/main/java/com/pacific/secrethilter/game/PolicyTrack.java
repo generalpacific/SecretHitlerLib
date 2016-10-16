@@ -26,8 +26,7 @@ public class PolicyTrack {
 
     @Override
     public String toString() {
-        return "PolicyTrack{" +
-                "numOfPoliciesEnacted=" + numOfPoliciesEnacted +
-                '}';
+        return "PolicyTrack{" + "numOfPoliciesEnacted=" +
+                numOfPoliciesEnacted + '}';
     }
 }

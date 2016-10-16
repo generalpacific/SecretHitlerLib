@@ -18,15 +18,21 @@ import java.util.List;
  */
 public class GameRunner {
 
-    private static final Logger logger = LoggerFactory.getLogger(GameRunner.class.getSimpleName());
+    private static final Logger logger = LoggerFactory.getLogger(GameRunner
+            .class.getSimpleName());
 
     private final GameState gameState;
 
-    private GameRunner(List<Policy> initialShuffledPolicies, List<Player> players, Player firstPresident) {
-        this.gameState = GameState.newGameState(initialShuffledPolicies, players, firstPresident);
+    private GameRunner(List<Policy> initialShuffledPolicies, List<Player>
+            players, Player firstPresident) {
+        this.gameState = GameState.newGameState(initialShuffledPolicies,
+                players, firstPresident);
     }
 
-    public static GameRunner newGameRunner(List<Policy> initialShuffledPolicies, List<Player> players, Player firstPresident) {
+    public static GameRunner newGameRunner(List<Policy>
+                                                   initialShuffledPolicies,
+                                           List<Player> players, Player
+                                                   firstPresident) {
         return new GameRunner(initialShuffledPolicies, players, firstPresident);
     }
 
@@ -45,15 +51,19 @@ public class GameRunner {
             player.castVote(chancellor.getPlayerId(), Position.CHANCELLOR);
         }
 
-        gameState.setCurrentGovernment(Government.newGovernment(nextPresident, chancellor));
+        gameState.setCurrentGovernment(Government.newGovernment
+                (nextPresident, chancellor));
 
         final Policy policy1 = gameState.drawPolicy();
         final Policy policy2 = gameState.drawPolicy();
         final Policy policy3 = gameState.drawPolicy();
 
-        final List<Policy> policies = gameState.getCurrentGovernment().getPresident().decidePolicyToSendtoChancellor(policy1, policy2, policy3);
+        final List<Policy> policies = gameState.getCurrentGovernment()
+                .getPresident().decidePolicyToSendtoChancellor(policy1,
+                        policy2, policy3);
 
-        final Policy policy = gameState.getCurrentGovernment().getChancellor().decidePolicyToEnact(policies.get(0), policies.get(1));
+        final Policy policy = gameState.getCurrentGovernment().getChancellor
+                ().decidePolicyToEnact(policies.get(0), policies.get(1));
 
         gameState.enactPolicy(policy);
         logger.info("GameState after round: " + gameState);

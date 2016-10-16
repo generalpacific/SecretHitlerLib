@@ -39,8 +39,8 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
     }
 
     @Override
-    public List<Policy> decidePolicyToSendtoChancellor(Policy policy1, Policy policy2,
-                                            Policy policy3) {
+    public List<Policy> decidePolicyToSendtoChancellor(Policy policy1, Policy
+            policy2, Policy policy3) {
         // TODO Add logic
         return ImmutableList.of(policy1, policy2);
     }
@@ -52,7 +52,7 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
     }
 
     public String getPlayerId() {
-        return  playerId;
+        return playerId;
     }
 
     @Override
@@ -61,7 +61,8 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
         final Government lastGovernment = gameState.getLastGovernment();
         for (final Player player : players) {
             String playerId = player.getPlayerId();
-            if (isCurrentOrLastChancellorOrLastPresident(lastGovernment, playerId)) {
+            if (isCurrentOrLastChancellorOrLastPresident(lastGovernment,
+                    playerId)) {
                 continue;
             }
             return player;
@@ -69,22 +70,22 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
         return null;
     }
 
-    private boolean isCurrentOrLastChancellorOrLastPresident(Government lastGovernment, String playerId) {
+    private boolean isCurrentOrLastChancellorOrLastPresident(Government
+                                                                     lastGovernment, String playerId) {
         if (playerId.equals(getPlayerId())) {
             return true;
         }
         if (lastGovernment == null) {
             return false;
         }
-        return playerId.equals(lastGovernment.getChancellor().getPlayerId()) || playerId.equals(lastGovernment.getPresident());
+        return playerId.equals(lastGovernment.getChancellor().getPlayerId())
+                || playerId.equals(lastGovernment.getPresident());
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "playerId='" + playerId + '\'' +
-                ", role=" + role +
-                '}';
+        return "Player{" + "playerId='" + playerId + '\'' + ", role=" + role
+                + '}';
     }
 
     @Override
