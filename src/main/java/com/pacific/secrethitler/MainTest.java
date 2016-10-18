@@ -21,5 +21,15 @@ public class MainTest {
 
         logger.info("Running round 1");
         gameRunner.runRound();
+        logger.info("Running round 2");
+        gameRunner.runRound();
+        logger.info("Running round 3");
+        gameRunner.runRound();
+        logger.info("Running round 4");
+        gameRunner.runRound();
+        logger.info("Running round 5");
+        gameRunner.runRound();
+        logger.info("Running round 6");
+        gameRunner.runRound();
     }
 }

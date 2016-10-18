@@ -1,7 +1,11 @@
 package com.pacific.secrethitler;
 
+import com.google.common.collect.ImmutableList;
+
 import com.pacific.secrethitler.game.GameState;
 import com.pacific.secrethitler.game.Government;
+import com.pacific.secrethitler.game.diff.HashMapPolicyDiff;
+import com.pacific.secrethitler.game.diff.PolicyDiff;
 import com.pacific.secrethitler.player.Player;
 import com.pacific.secrethitler.types.Policy;
 import com.pacific.secrethitler.types.Position;
@@ -20,6 +24,7 @@ public class GameRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(GameRunner
             .class.getSimpleName());
+    private static final PolicyDiff policyDiff = new HashMapPolicyDiff();
 
     private final GameState gameState;
 
@@ -51,21 +56,29 @@ public class GameRunner {
             player.castVote(chancellor.getPlayerId(), Position.CHANCELLOR);
         }
 
-        gameState.setCurrentGovernment(Government.newGovernment
-                (nextPresident, chancellor));
+        final Government government = Government.newGovernment(nextPresident,
+                chancellor);
+        gameState.setCurrentGovernment(government);
 
         final Policy policy1 = gameState.drawPolicy();
         final Policy policy2 = gameState.drawPolicy();
         final Policy policy3 = gameState.drawPolicy();
+        final ImmutableList<Policy> initialPolicies = ImmutableList.of
+                (policy1, policy2, policy3);
 
         final List<Policy> policies = gameState.getCurrentGovernment()
                 .getPresident().decidePolicyToSendtoChancellor(policy1,
                         policy2, policy3);
+        gameState.putDiscardedPolicy(policyDiff.getDiscardedPolicy
+                (initialPolicies, policies));
 
         final Policy policy = gameState.getCurrentGovernment().getChancellor
                 ().decidePolicyToEnact(policies.get(0), policies.get(1));
+        gameState.putDiscardedPolicy(policyDiff.getDiscardedPolicy
+                (ImmutableList.of(policy), policies));
 
         gameState.enactPolicy(policy);
+        gameState.setLastGovernment(government);
         logger.info("GameState after round: " + gameState);
 
     }

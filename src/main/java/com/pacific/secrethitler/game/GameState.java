@@ -57,6 +57,10 @@ public class GameState {
         return drawPolicyDeck.drawPolicy();
     }
 
+    public void putDiscardedPolicy(final Policy policy) {
+        drawPolicyDeck.putDiscardedPolicy(policy);
+    }
+
     public void enactPolicy(final Policy policy) {
         if (Policy.LIBERAL.equals(policy)) {
             liberalPolicyTrack.enactPolicy();
