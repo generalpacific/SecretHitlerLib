@@ -2,6 +2,8 @@ package com.pacific.secrethitler;
 
 import com.google.common.collect.ImmutableList;
 
+import com.pacific.secrethitler.condition.ConditionsChecker;
+import com.pacific.secrethitler.condition.RoundResult;
 import com.pacific.secrethitler.game.GameState;
 import com.pacific.secrethitler.game.Government;
 import com.pacific.secrethitler.game.diff.HashMapPolicyDiff;
@@ -41,7 +43,7 @@ public class GameRunner {
         return new GameRunner(initialShuffledPolicies, players, firstPresident);
     }
 
-    public void runRound() {
+    public RoundResult runRound() {
 
         logger.info("GameState before round: " + gameState);
 
@@ -81,5 +83,6 @@ public class GameRunner {
         gameState.setLastGovernment(government);
         logger.info("GameState after round: " + gameState);
 
+        return ConditionsChecker.checkCondition(gameState);
     }
 }

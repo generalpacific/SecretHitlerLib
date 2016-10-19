@@ -1,5 +1,6 @@
 package com.pacific.secrethitler;
 
+import com.pacific.secrethitler.condition.RoundResult;
 import com.pacific.secrethitler.test.TestData;
 
 import org.slf4j.Logger;
@@ -19,17 +20,13 @@ public class MainTest {
                 .getInitialPolicies(), testData.getInitialPlayers(), testData
                 .getFirstPresident());
 
-        logger.info("Running round 1");
-        gameRunner.runRound();
-        logger.info("Running round 2");
-        gameRunner.runRound();
-        logger.info("Running round 3");
-        gameRunner.runRound();
-        logger.info("Running round 4");
-        gameRunner.runRound();
-        logger.info("Running round 5");
-        gameRunner.runRound();
-        logger.info("Running round 6");
-        gameRunner.runRound();
+        int i = 0;
+        RoundResult result = RoundResult.CONTINUE_GAME;
+        while (result.equals(RoundResult.CONTINUE_GAME)) {
+            logger.info("Running round: " + i);
+            result = gameRunner.runRound();
+            logger.info("Round: " + i + " result: " + result);
+            ++i;
+        }
     }
 }

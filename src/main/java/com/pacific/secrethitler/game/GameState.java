@@ -28,6 +28,7 @@ public class GameState {
     private final PolicyTrack fascistPolicyTrack;
     private final Map<String, Player> players;
     private final Queue<Player> presidentQueue;
+    private final int numOfPlayers;
 
     private Government currentGovernment;
     private Government lastGovernment;
@@ -42,6 +43,7 @@ public class GameState {
                 (Player::getPlayerId, Function.identity()));
         presidentQueue = createInitialPresidentQueue(initialPlayers,
                 firstPresident);
+        numOfPlayers = initialPlayers.size();
 
     }
 
@@ -126,5 +128,17 @@ public class GameState {
                 "fascistPolicyTrack=" + fascistPolicyTrack + ", " +
                 "currentGovernment=" + currentGovernment + ", " +
                 "lastGovernment=" + lastGovernment + '}';
+    }
+
+    public int getNumOfPlayers() {
+        return numOfPlayers;
+    }
+
+    public int getNumberOfEnactedFascistPolicies() {
+        return fascistPolicyTrack.getNumberOfPoliciesEnacted();
+    }
+
+    public int getNumberOfEnactedLiberalPolicies() {
+        return liberalPolicyTrack.getNumberOfPoliciesEnacted();
     }
 }
