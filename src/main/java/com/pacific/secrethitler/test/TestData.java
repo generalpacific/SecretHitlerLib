@@ -2,6 +2,8 @@ package com.pacific.secrethitler.test;
 
 import com.google.common.collect.ImmutableList;
 
+import com.pacific.secrethitler.game.shuffle.CollectionsShuffler;
+import com.pacific.secrethitler.game.shuffle.Shuffler;
 import com.pacific.secrethitler.player.Player;
 import com.pacific.secrethitler.types.Policy;
 import com.pacific.secrethitler.types.Role;
@@ -15,7 +17,9 @@ import java.util.stream.IntStream;
  */
 public class TestData {
 
-    private Player firstPresident = Player.newPlayer("playerLiberal1", Role
+    private final Shuffler shuffler = new CollectionsShuffler();
+    private final Player firstPresident = Player.newPlayer("playerLiberal1",
+            Role
             .LIBERAL);
 
     public List<Policy> getInitialPolicies() {
@@ -24,7 +28,7 @@ public class TestData {
                 .collect(Collectors.toList()));
         policies.addAll(IntStream.range(0, 6).mapToObj(i -> Policy.LIBERAL)
                 .collect(Collectors.toList()));
-        return policies.build();
+        return shuffler.shuffle(policies.build());
     }
 
     public List<Player> getInitialPlayers() {

@@ -43,4 +43,9 @@ public class QueueDrawPolicyDeck implements DrawPolicyDeck {
     public void putDiscardedPolicy(final Policy policy) {
         deck.add(policy);
     }
+
+    @Override
+    public String toString() {
+        return "QueueDrawPolicyDeck{" + "deck=" + deck + '}';
+    }
 }
