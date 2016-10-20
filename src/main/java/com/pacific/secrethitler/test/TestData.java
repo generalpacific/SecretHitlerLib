@@ -4,11 +4,14 @@ import com.google.common.collect.ImmutableList;
 
 import com.pacific.secrethitler.game.shuffle.CollectionsShuffler;
 import com.pacific.secrethitler.game.shuffle.Shuffler;
+import com.pacific.secrethitler.player.DumbPolicyDecider;
+import com.pacific.secrethitler.player.DumbVoteCaster;
 import com.pacific.secrethitler.player.Player;
 import com.pacific.secrethitler.types.Policy;
 import com.pacific.secrethitler.types.Role;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,9 +19,6 @@ import java.util.stream.IntStream;
  * This class has methods for generating test data.
  */
 public class TestData {
-
-    private final Player firstPresident = Player.newPlayer("playerLiberal1",
-            Role.LIBERAL);
 
     private final int numOfPlayers;
     private final Shuffler shuffler;
@@ -44,19 +44,26 @@ public class TestData {
 
     public List<Player> getInitialPlayers() {
         final ImmutableList.Builder<Player> players = ImmutableList.builder();
-        players.addAll(IntStream.range(0, 3).mapToObj(i -> Player.newPlayer
-                ("playerLiberal" + i, Role.LIBERAL)).collect(Collectors
-                .toList()));
-        players.addAll(IntStream.range(0, 1).mapToObj(i -> Player.newPlayer
-                ("playerFascist" + i, Role.FASCIST)).collect(Collectors
-                .toList()));
-        players.addAll(IntStream.range(0, 1).mapToObj(i -> Player.newPlayer
-                ("playerHitler" + i, Role.HITLER)).collect(Collectors.toList
-                ()));
+        players.add(Player.builder().setPlayerId("player0").setRole(Role
+                .LIBERAL).setPolicyDecider(new DumbPolicyDecider())
+                .setVoteCaster(new DumbVoteCaster()).build());
+        players.add(Player.builder().setPlayerId("player1").setRole(Role
+                .LIBERAL).setPolicyDecider(new DumbPolicyDecider())
+                .setVoteCaster(new DumbVoteCaster()).build());
+        players.add(Player.builder().setPlayerId("player2").setRole(Role
+                .LIBERAL).setPolicyDecider(new DumbPolicyDecider())
+                .setVoteCaster(new DumbVoteCaster()).build());
+        players.add(Player.builder().setPlayerId("player3").setRole(Role
+                .FASCIST).setPolicyDecider(new DumbPolicyDecider())
+                .setVoteCaster(new DumbVoteCaster()).build());
+        players.add(Player.builder().setPlayerId("player4").setRole(Role
+                .HITLER).setPolicyDecider(new DumbPolicyDecider())
+                .setVoteCaster(new DumbVoteCaster()).build());
         return shuffler.shuffle(players.build());
     }
 
-    public Player getFirstPresident() {
-        return firstPresident;
+    public String getFirstPresident() {
+        final Random rand = new Random(System.currentTimeMillis());
+        return "player" + rand.nextInt(6);
     }
 }

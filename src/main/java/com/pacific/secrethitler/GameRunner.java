@@ -31,14 +31,14 @@ public class GameRunner {
     private final GameState gameState;
 
     private GameRunner(List<Policy> initialShuffledPolicies, List<Player>
-            players, Player firstPresident) {
+            players, String firstPresident) {
         this.gameState = GameState.newGameState(initialShuffledPolicies,
                 players, firstPresident);
     }
 
     public static GameRunner newGameRunner(List<Policy>
                                                    initialShuffledPolicies,
-                                           List<Player> players, Player
+                                           List<Player> players, String
                                                    firstPresident) {
         return new GameRunner(initialShuffledPolicies, players, firstPresident);
     }

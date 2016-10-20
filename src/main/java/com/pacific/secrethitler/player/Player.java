@@ -21,33 +21,36 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
 
     private final String playerId;
     private final Role role;
+    private final VoteCaster voteCaster;
+    private final PolicyDecider policyDecider;
 
-    private Player(String playerId, Role role) {
+    private Player(String playerId, Role role, VoteCaster voteCaster,
+                   PolicyDecider policyDecider) {
         this.playerId = playerId;
         this.role = role;
+        this.voteCaster = voteCaster;
+        this.policyDecider = policyDecider;
     }
 
-    public static Player newPlayer(String playerId, Role role) {
-        return new Player(playerId, role);
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
     public Vote castVote(String playerId, Position position) {
-        // TODO Add logic
-        return Vote.YES;
+        return voteCaster.castVote(playerId, position);
     }
 
     @Override
     public List<Policy> decidePolicyToSendtoChancellor(Policy policy1, Policy
             policy2, Policy policy3) {
-        // TODO Add logic
-        return ImmutableList.of(policy1, policy2);
+        return policyDecider.decidePolicyToSendtoChancellor(policy1, policy2,
+                policy3);
     }
 
     @Override
     public Policy decidePolicyToEnact(Policy policy1, Policy policy2) {
-        // TODO Add logic
-        return policy1;
+        return policyDecider.decidePolicyToEnact(policy1, policy2);
     }
 
     public String getPlayerId() {
@@ -98,5 +101,40 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
     @Override
     public int hashCode() {
         return Objects.hashCode(playerId);
+    }
+
+    public static class Builder {
+        private String playerId;
+        private Role role;
+        private VoteCaster voteCaster = new DumbVoteCaster();
+        private PolicyDecider policyDecider = new DumbPolicyDecider();
+
+        private Builder() {
+
+        }
+
+        public Builder setPlayerId(String playerId) {
+            this.playerId = playerId;
+            return this;
+        }
+
+        public Builder setRole(Role role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder setVoteCaster(VoteCaster voteCaster) {
+            this.voteCaster = voteCaster;
+            return this;
+        }
+
+        public Builder setPolicyDecider(PolicyDecider policyDecider) {
+            this.policyDecider = policyDecider;
+            return this;
+        }
+
+        public Player build() {
+            return new Player(playerId, role, voteCaster, policyDecider);
+        }
     }
 }

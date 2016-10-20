@@ -34,7 +34,7 @@ public class GameState {
     private Government lastGovernment;
 
     private GameState(final List<Policy> initialShuffledPolicies, final
-    List<Player> initialPlayers, final Player firstPresident) {
+    List<Player> initialPlayers, final String firstPresident) {
         drawPolicyDeck = QueueDrawPolicyDeck.newDrawPolicyDeck
                 (initialShuffledPolicies);
         liberalPolicyTrack = PolicyTrack.newPolicyTrack();
@@ -42,7 +42,7 @@ public class GameState {
         players = initialPlayers.stream().collect(Collectors.toMap
                 (Player::getPlayerId, Function.identity()));
         presidentQueue = createInitialPresidentQueue(initialPlayers,
-                firstPresident);
+                players.get(firstPresident));
         numOfPlayers = initialPlayers.size();
 
     }
@@ -50,7 +50,7 @@ public class GameState {
     public static GameState newGameState(final List<Policy>
                                                  initialShuffledPolicies,
                                          final List<Player> initialPlayers,
-                                         final Player firstPresident) {
+                                         final String firstPresident) {
         return new GameState(initialShuffledPolicies, initialPlayers,
                 firstPresident);
     }
