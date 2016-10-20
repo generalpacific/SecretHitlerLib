@@ -9,8 +9,8 @@ import com.pacific.secrethitler.types.Policy;
  *
  * @author prashantchaudhary
  */
-public interface Shuffler {
+public interface Shuffler<T> {
 
-    List<Policy> shuffle(List<Policy> policies);
+    List<T> shuffle(List<T> policies);
 
 }

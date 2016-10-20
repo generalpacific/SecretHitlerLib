@@ -127,7 +127,8 @@ public class GameState {
                 "liberalPolicyTrack=" + liberalPolicyTrack + ", " +
                 "fascistPolicyTrack=" + fascistPolicyTrack + ", " +
                 "currentGovernment=" + currentGovernment + ", " +
-                "lastGovernment=" + lastGovernment + '}';
+                "lastGovernment=" + lastGovernment + ',' +
+                "presidentQueue=" + presidentQueue;
     }
 
     public int getNumOfPlayers() {

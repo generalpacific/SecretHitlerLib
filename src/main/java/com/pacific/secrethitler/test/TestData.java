@@ -17,10 +17,21 @@ import java.util.stream.IntStream;
  */
 public class TestData {
 
-    private final Shuffler shuffler = new CollectionsShuffler();
     private final Player firstPresident = Player.newPlayer("playerLiberal1",
-            Role
-            .LIBERAL);
+            Role.LIBERAL);
+
+    private final int numOfPlayers;
+    private final Shuffler shuffler;
+
+    private TestData(final int numOfPlayers, final Shuffler shuffler) {
+        this.numOfPlayers = numOfPlayers;
+        this.shuffler = shuffler;
+    }
+
+    public static TestData newTestData(final int numOfPlayers, final Shuffler
+            shuffler) {
+        return new TestData(numOfPlayers, shuffler);
+    }
 
     public List<Policy> getInitialPolicies() {
         final ImmutableList.Builder<Policy> policies = ImmutableList.builder();
@@ -42,7 +53,7 @@ public class TestData {
         players.addAll(IntStream.range(0, 1).mapToObj(i -> Player.newPlayer
                 ("playerHitler" + i, Role.HITLER)).collect(Collectors.toList
                 ()));
-        return players.build();
+        return shuffler.shuffle(players.build());
     }
 
     public Player getFirstPresident() {

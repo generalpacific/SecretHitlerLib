@@ -17,7 +17,7 @@ public class QueueDrawPolicyDeck implements DrawPolicyDeck {
     private final Queue<Policy> deck;
 
     private QueueDrawPolicyDeck(final List<Policy> initialShuffledPolicies) {
-        deck = new LinkedList<Policy>(initialShuffledPolicies);
+        deck = new LinkedList<>(initialShuffledPolicies);
     }
 
     /**

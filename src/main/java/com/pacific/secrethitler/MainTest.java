@@ -1,6 +1,7 @@
 package com.pacific.secrethitler;
 
 import com.pacific.secrethitler.condition.RoundResult;
+import com.pacific.secrethitler.game.shuffle.CollectionsShuffler;
 import com.pacific.secrethitler.test.TestData;
 
 import org.slf4j.Logger;
@@ -15,7 +16,8 @@ public class MainTest {
             .class.getSimpleName());
 
     public static void main(String[] args) {
-        final TestData testData = new TestData();
+        final TestData testData = TestData.newTestData(5, new
+                CollectionsShuffler());
         final GameRunner gameRunner = GameRunner.newGameRunner(testData
                 .getInitialPolicies(), testData.getInitialPlayers(), testData
                 .getFirstPresident());
