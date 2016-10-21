@@ -16,7 +16,7 @@ public class MainTest {
             .class.getSimpleName());
 
     public static void main(String[] args) {
-        final TestData testData = TestData.newTestData(5, new
+        final TestData testData = TestData.newTestData(10, new
                 CollectionsShuffler());
         final GameRunner gameRunner = GameRunner.newGameRunner(testData
                 .getInitialPolicies(), testData.getInitialPlayers(), testData
