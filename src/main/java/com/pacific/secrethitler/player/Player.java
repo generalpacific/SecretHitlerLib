@@ -57,6 +57,10 @@ public class Player implements VoteCaster, PolicyDecider, ChancellorDecider {
         return playerId;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     @Override
     public Player selectChancellor(final GameState gameState) {
         final List<Player> players = gameState.getPlayers();
