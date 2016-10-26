@@ -25,7 +25,8 @@ public class TestData {
     private final Shuffler shuffler;
 
     private TestData(final int numOfPlayers, final Shuffler shuffler) {
-        Preconditions.checkArgument(numOfPlayers >= 5 && numOfPlayers <= 10);
+        Preconditions.checkArgument(numOfPlayers >= 5 && numOfPlayers <= 10,
+                "Number of players should be between 5 and 10");
         this.numOfPlayers = numOfPlayers;
         this.shuffler = shuffler;
     }
