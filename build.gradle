@@ -1,6 +1,7 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: "jacoco"
 defaultTasks 'clean', 'build'
 
 // In this section you declare where to find the dependencies of your project
@@ -56,5 +57,18 @@ test {
 buildscript {
     dependencies {
         classpath fileTree(dir: '../../build/libs', include: '*.jar', excludes: ['*javadoc.jar', '*sources.jar'])
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination "${buildDir}/jacocoHtml"
     }
 }
